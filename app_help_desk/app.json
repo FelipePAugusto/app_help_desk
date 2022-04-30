@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "app_help_desk",
+    "slug": "app_help_desk",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
