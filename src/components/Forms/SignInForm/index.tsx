@@ -22,14 +22,17 @@ export function SignInForm() {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        Alert.alert("Logado com sucesso :)");
+        Alert.alert("Logado com sucesso :)", "Seja bem vindo ao Help Desk");
       })
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }
 
   function handleForgotPassword() {
-
+    auth()
+    .sendPasswordResetEmail(email)
+    .then(() => Alert.alert("Redefinição de Senha", "Enviamos um e-mail para você!"))
+    .catch(error => console.log(error));
   }
 
   return (
