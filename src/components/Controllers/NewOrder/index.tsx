@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import React, { useRef } from 'react';
 import { BottomSheetView, BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
