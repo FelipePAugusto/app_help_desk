@@ -32,7 +32,10 @@ export function SignInForm() {
     auth()
     .sendPasswordResetEmail(email)
     .then(() => Alert.alert("Redefinição de Senha", "Enviamos um e-mail para você!"))
-    .catch(error => console.log(error));
+    .catch(error => {
+      setIsLoading(false);
+      console.log(error)
+    });
   }
 
   return (
