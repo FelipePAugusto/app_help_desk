@@ -2,10 +2,13 @@ import 'react-native-gesture-handler';
 
 import React, { useState } from 'react';
 
+import firestore from '@react-native-firebase/firestore';
+
 import { Form, Title } from './styles';
 import { Input } from '@components/Controllers/Input';
 import { Button } from '@components/Controllers/Button';
 import { TextArea } from '@components/Controllers/TextArea';
+import { Alert } from 'react-native';
 
 export function OrderForm() {
   const [patrimony, setPatrimony] = useState('');
@@ -14,6 +17,18 @@ export function OrderForm() {
 
   function handleNewOrder() {
     setIsLoading(true);
+
+    firestore()
+    .collection('orders')
+    .add({
+      patrimony,
+      description,
+      status: 'open',
+      create_at: firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => Alert.alert("Chamado aberto!", "Seu chamado foi aberto com sucesso."))
+    .catch((error) => console.log(error))
+    .finally(() => setIsLoading(false));
   }
 
   return (
