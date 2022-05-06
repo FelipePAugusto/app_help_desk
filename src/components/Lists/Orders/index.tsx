@@ -20,6 +20,7 @@ export function Orders() {
 
     const subscribe = firestore()
     .collection('orders')
+    .where('status', '==', status)
     .onSnapshot(querySnapshot => {
       const data = querySnapshot.docs.map(doc => {
         return {
@@ -31,9 +32,9 @@ export function Orders() {
       setOrders(data);
       setIsLoading(false);
     });
-    
+
     return () => subscribe();
-  }, []);
+  }, [status]);
 
   return (
     <Container>
